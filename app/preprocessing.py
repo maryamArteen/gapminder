@@ -2,7 +2,7 @@ import os
 import pandas as pd
 import streamlit as st
 
-SRC_DIR = os.path.join(os.path.dirname(__file__), '/Users/maryamayman/Desktop/gapminder/src')
+SRC_DIR = os.path.join(os.path.dirname(__file__), 'src')
 
 def parse_population(val):
     if pd.isna(val):
@@ -37,9 +37,9 @@ def load_and_tidy_csv(filename, value_name, parse_func=None):
 
 @st.cache_data
 def load_preprocessed_data():
-    life_expectancy = load_and_tidy_csv('lex.csv', 'life_expectancy')
-    population = load_and_tidy_csv('pop.csv', 'population', parse_population)
-    gni = load_and_tidy_csv('gni.csv', 'gni_per_capita_ppp')
+    life_expectancy = load_and_tidy_csv('src/lex.csv', 'life_expectancy')
+    population = load_and_tidy_csv('src/pop.csv', 'population', parse_population)
+    gni = load_and_tidy_csv('src/gni.csv', 'gni_per_capita_ppp')
 
     df = life_expectancy.merge(population, on=['country', 'year'], how='outer')
     df = df.merge(gni, on=['country', 'year'], how='outer')
