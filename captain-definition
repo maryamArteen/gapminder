@@ -1,4 +1,9 @@
 {
     "schemaVersion": 2,
-    "dockerfilePath": "./Dockerfile"
-}
+    "dockerfilePath": "./Dockerfile",
+    "services": {
+      "$$cap_appname": {
+        "command": ["sh", "-c", "echo 'Listing files:'; ls -R /app; echo 'Finished listing.'"]
+      }
+    }
+  }
